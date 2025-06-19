@@ -10,12 +10,20 @@ export default async function EditPage({ params }: Props) {
     where: { id: Number(params.id) },
   })
 
-  if (!employee) return <p>Employee not found</p>
+  if (!employee) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-red-600 text-lg font-medium"> Employee not found.</p>
+      </div>
+    )
+  }
 
   return (
-    <div className="p-6">
-      <h2 className="text-xl font-bold mb-4">Edit Employee</h2>
-      <EmployeeForm id={employee.id} initialData={employee} />
+    <div className="min-h-screen bg-gray-50 py-10 px-4">
+      <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-xl p-8">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6">Edit Employee</h2>
+        <EmployeeForm id={employee.id} initialData={employee} />
+      </div>
     </div>
   )
 }
