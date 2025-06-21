@@ -3,6 +3,7 @@ import '../global.css'
 import Navbar from '@/components/Navbar'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { ReactNode } from 'react'
+import { Toaster } from 'sonner'
 
 export const metadata = {
   title: 'Employee Management System',
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <ThemeProvider>
           <Navbar /> 
           <main className="max-w-5xl mx-auto">{children}</main>
+          <Toaster richColors position="top-right" />
         </ThemeProvider>
       </body>
     </html>
