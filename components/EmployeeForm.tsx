@@ -1,6 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 
@@ -13,26 +15,57 @@ interface Props {
   id?: number
 }
 
+
+const schema = z.object({
+  name: z.string().min(2, 'Name is required'),
+  email: z.string().email('Invalid email'),
+  position: z.string().min(2, 'Position is required'),
+})
+
+type FormData = z.infer<typeof schema>
+
 export default function EmployeeForm({ initialData = { name: '', email: '', position: '' }, id }: Props) {
-  const [form, setForm] = useState(initialData)
   const router = useRouter()
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+  
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+    defaultValues: initialData,
+  })
+
+  const onSubmit = async (data: FormData) => {
     if (id) {
-      await axios.put(`/api/employees/${id}`, form)
+      await axios.put(`/api/employees/${id}`, data)
     } else {
-      await axios.post('/api/employees', form)
+      await axios.post('/api/employees', data)
     }
     router.push('/employees')
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="Name" className="border p-2 w-full" />
-      <input value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} placeholder="Email" className="border p-2 w-full" />
-      <input value={form.position} onChange={e => setForm({ ...form, position: e.target.value })} placeholder="Position" className="border p-2 w-full" />
-      <button type="submit" className="bg-blue-600 text-white px-4 py-2 cursor-pointer">Submit</button>
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-md">
+      <div>
+        <input {...register('name')} placeholder="Name" className="border p-2 w-full" />
+        {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
+      </div>
+
+      <div>
+        <input {...register('email')} placeholder="Email" className="border p-2 w-full" />
+        {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+      </div>
+
+      <div>
+        <input {...register('position')} placeholder="Position" className="border p-2 w-full" />
+        {errors.position && <p className="text-red-500 text-sm">{errors.position.message}</p>}
+      </div>
+
+      <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer">
+        {id ? 'Update' : 'Create'}
+      </button>
     </form>
   )
 }
