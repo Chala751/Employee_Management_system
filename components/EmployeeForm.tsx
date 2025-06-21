@@ -50,7 +50,7 @@ export default function EmployeeForm({ initialData = { name: '', email: '', posi
       }
       router.push('/employees')
     } catch (error) {
-      toast.error('Submission failed')
+      toast.error('Submission failed already existing email')
     } finally {
       setLoading(false)
     }
