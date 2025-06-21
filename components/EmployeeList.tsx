@@ -5,6 +5,8 @@ import Link from 'next/link'
 import EmployeeSkeleton from './EmployeeSkeleton'
 import { toast } from 'sonner'
 import { Plus, Edit2, Trash2 } from 'lucide-react'
+import ConfirmDeleteDialog from './ConfirmDeleteDialog'
+
 
 interface Employee {
   id: number
@@ -74,13 +76,8 @@ export default function EmployeeList() {
                 <Edit2 className="w-4 h-4 mr-1" />
                 Edit
               </Link>
-              <button
-                onClick={() => handleDelete(e.id)}
-                className="inline-flex items-center text-red-600 hover:underline cursor-pointer"
-              >
-                <Trash2 className="w-4 h-4 mr-1" />
-                Delete
-              </button>
+              <ConfirmDeleteDialog onConfirm={() => handleDelete(e.id)} />
+
             </div>
           </li>
         ))}
