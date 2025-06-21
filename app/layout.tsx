@@ -1,6 +1,7 @@
 // app/layout.tsx
 import '../global.css'
 import Navbar from '@/components/Navbar'
+import { ThemeProvider } from '@/components/ThemeProvider'
 import { ReactNode } from 'react'
 
 export const metadata = {
@@ -12,8 +13,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <Navbar /> 
-        <main className="max-w-5xl mx-auto">{children}</main>
+        <ThemeProvider>
+          <Navbar /> 
+          <main className="max-w-5xl mx-auto">{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   )

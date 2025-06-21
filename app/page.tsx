@@ -1,6 +1,6 @@
 export default function HomePage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br   text-white">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br   text-white  ">
       <div className="text-center max-w-xl space-y-6 px-4">
         <h1 className="text-5xl font-extrabold drop-shadow-lg text-blue-600">Welcome to EMS</h1>
         <p className="text-lg text-blue-500 drop-shadow-sm">

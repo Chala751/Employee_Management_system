@@ -32,7 +32,7 @@ export default function EmployeeForm({ initialData = { name: '', email: '', posi
       <input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="Name" className="border p-2 w-full" />
       <input value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} placeholder="Email" className="border p-2 w-full" />
       <input value={form.position} onChange={e => setForm({ ...form, position: e.target.value })} placeholder="Position" className="border p-2 w-full" />
-      <button type="submit" className="bg-blue-600 text-white px-4 py-2">Submit</button>
+      <button type="submit" className="bg-blue-600 text-white px-4 py-2 cursor-pointer">Submit</button>
     </form>
   )
 }
