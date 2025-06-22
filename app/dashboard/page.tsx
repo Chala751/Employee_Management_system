@@ -38,7 +38,7 @@ export default function DashboardPage() {
         Employee Dashboard
       </motion.h1>
 
-      <div className="max-w-md">
+      <div className="max-w-md mb-5">
         <Input
           type="text"
           placeholder="Search by name..."
@@ -48,7 +48,7 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
-        <div className="bg-white dark:bg-gray-800 p-4 rounded shadow">
+        <div className="bg-white p-4 rounded shadow">
           <h2 className="text-lg font-semibold mb-2">Employee Chart</h2>
           <ResponsiveContainer width="100%" height={250}>
             <BarChart data={chartData}>
@@ -60,7 +60,7 @@ export default function DashboardPage() {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 p-4 rounded shadow">
+        <div className="bg-white p-4 rounded shadow">
           <h2 className="text-lg font-semibold mb-2">Employees</h2>
           <ul className="space-y-2">
             {filtered.map(e => (
