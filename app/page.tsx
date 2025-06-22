@@ -1,5 +1,8 @@
 'use client'
-
+import Image from 'next/image'
+import emsImage from './images/ems1.jpg' 
+import emsImage2 from './images/ems2.jpg' 
+import emsImage3 from './images/ems3.avif' 
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Users, SunMoon, Settings } from 'lucide-react'
@@ -34,10 +37,17 @@ export default function HomePage() {
         >
           Welcome to EMS
         </motion.h1>
+        
+         <Image
+           src={emsImage}
+           alt="EMS Dashboard Preview"
+            className="rounded-xl shadow-xl mx-auto mt-4" 
+           width={800}
+           height={500}
+          />
         <p className="mt-4 text-lg text-gray-700 dark:text-gray-300">
           Manage your employees with ease. Add, view, update, and remove employee data effortlessly.
         </p>
-        
 
         <Link
           href="/employees"
@@ -75,6 +85,13 @@ export default function HomePage() {
       {/* Recent Employees */}
       {recentEmployees.length > 0 && (
         <section className="mt-16 px-4 max-w-4xl mx-auto">
+          <Image
+           src={emsImage2}
+           alt="EMS Dashboard Preview"
+            className="rounded-xl shadow-xl mx-auto mt-4 mb-5" 
+           width={800}
+           height={500}
+          />
           <h2 className="text-2xl font-bold mb-6 text-center">Recent Employees</h2>
           <div className="grid md:grid-cols-3 gap-4">
             {recentEmployees.map((emp) => (
@@ -93,6 +110,13 @@ export default function HomePage() {
       {/* Testimonials */}
       <section className="mt-16 px-6 py-12 bg-white dark:bg-gray-800">
         <h2 className="text-2xl font-bold text-center mb-8">What People Say</h2>
+        <Image
+           src={emsImage3}
+           alt="EMS Dashboard Preview"
+            className="rounded-xl shadow-xl mx-auto mt-4 mb-5" 
+           width={600}
+           height={400}
+          />
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto text-center">
           {[
             {
