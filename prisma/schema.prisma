@@ -15,9 +15,29 @@ datasource db {
 }
 
 model Employee {
-  id        Int      @id @default(autoincrement())
-  name      String
-  position  String
-  email     String   @unique
-  hiredDate DateTime @default(now())
+  id            Int            @id @default(autoincrement())
+  name          String
+  position      String
+  email         String         @unique
+  hiredDate     DateTime       @default(now())
+  attendances   Attendance[] // Back-relation
+  leaveRequests LeaveRequest[] //  Back-relation
+}
+
+model Attendance {
+  id         Int      @id @default(autoincrement())
+  date       DateTime
+  status     String // Present, Absent, Leave
+  employee   Employee @relation(fields: [employeeId], references: [id])
+  employeeId Int
+}
+
+model LeaveRequest {
+  id         Int      @id @default(autoincrement())
+  from       DateTime
+  to         DateTime
+  reason     String
+  status     String   @default("Pending") // Approved, Rejected
+  employee   Employee @relation(fields: [employeeId], references: [id])
+  employeeId Int
 }
