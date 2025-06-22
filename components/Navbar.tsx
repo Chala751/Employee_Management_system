@@ -14,7 +14,7 @@ export default function Navbar() {
   const navItem = (href: string, label: string) => (
     <Link
       href={href}
-      onClick={() => setIsOpen(false)} 
+      onClick={() => setIsOpen(false)}
       className={`block px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition ${
         pathname === href ? 'bg-blue-800 text-white' : ''
       }`}
@@ -35,6 +35,7 @@ export default function Navbar() {
           {navItem('/', 'Home')}
           {navItem('/employees', 'Employees')}
           {navItem('/employees/new', 'Add Employee')}
+          {navItem('/dashboard', 'Dashboard')}
           <button
             onClick={toggleTheme}
             className="ml-2 p-2 rounded-md hover:bg-blue-500 transition"
@@ -62,6 +63,7 @@ export default function Navbar() {
           {navItem('/', 'Home')}
           {navItem('/employees', 'Employees')}
           {navItem('/employees/new', 'Add Employee')}
+          {navItem('/dashboard', 'Dashboard')}
           <button
             onClick={() => {
               toggleTheme()

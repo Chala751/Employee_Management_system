@@ -57,7 +57,7 @@ export default function EmployeeForm({ initialData = { name: '', email: '', posi
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-md">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-md ">
       <div>
         <input
           {...register('name')}
