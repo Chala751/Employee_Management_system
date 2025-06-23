@@ -36,6 +36,9 @@ export default function Navbar() {
           {navItem('/employees', 'Employees')}
           {navItem('/employees/new', 'Add Employee')}
           {navItem('/dashboard', 'Dashboard')}
+          {navItem('/attendance', 'Attendance')}
+          {navItem('/leave', 'Request Leave')}
+          {navItem('/admin/leave-requests', 'Leave Approval')}
           <button
             onClick={toggleTheme}
             className="ml-2 p-2 rounded-md hover:bg-blue-500 transition"
@@ -64,6 +67,9 @@ export default function Navbar() {
           {navItem('/employees', 'Employees')}
           {navItem('/employees/new', 'Add Employee')}
           {navItem('/dashboard', 'Dashboard')}
+          {navItem('/attendance', 'Attendance')}
+          {navItem('/leave', 'Request Leave')}
+          {navItem('/admin/leave-requests', 'Leave Approval')}
           <button
             onClick={() => {
               toggleTheme()
